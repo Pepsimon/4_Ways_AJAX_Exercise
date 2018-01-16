@@ -59,4 +59,7 @@ axiosBtn.addEventListener('click', function() {
   .then(function(res) {
     quote.textContent = res.data[0];
   })
+  .catch(function() {
+    alert("Error!");
+  })
 })
