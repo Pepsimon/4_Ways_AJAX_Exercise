@@ -26,6 +26,7 @@ fetchBtn.addEventListener("click", function() {
   fetch(url)
   .then(parseData)
   .then(updateQuote)
+  .catch(error)
 })
 
 function parseData (res) {
@@ -36,15 +37,18 @@ function updateQuote (text) {
     quote.textContent = text[0];
 }
 
+function error (err) {
+  alert(err);
+}
+
 // jQuery
 
-var jqBtn = document.getElementById('jquery');
-
-jqBtn.addEventListener('click', function() {
-    $.getJSON(url, function(res) {
-    quote.textContent = res[0];
-  })
-})
+$("#jquery").click(function() {
+  $.getJSON(url)
+  .done(function(data) {
+    $("#quote").text(data[0]);
+  });
+});
 
 // AXIOS
 
